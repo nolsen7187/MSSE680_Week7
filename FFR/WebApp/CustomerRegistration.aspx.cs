@@ -36,7 +36,7 @@ namespace WebApp
 
             Facade newFacade = new Facade(uICustomer, ActionType);
             newFacade.ProcessRequest();
-            //
+            //deploy project
             //CustomerManager cm = new CustomerManager();
             //cm.Insert(uICustomer);
             /*XmlWriterSettings xmlSetting = new XmlWriterSettings();
