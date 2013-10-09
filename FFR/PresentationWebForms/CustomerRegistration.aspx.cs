@@ -34,8 +34,8 @@ namespace WebApp
             object Class = uICustomer;
             int ActionType = 1;
 
-            Facade newFacade = new Facade(Class, ActionType);
-//            Facade newFacade = new Facade(uICustomer, ActionType);
+//            Facade newFacade = new Facade(Class, ActionType);
+            Facade newFacade = new Facade(uICustomer, ActionType);
             newFacade.ProcessRequest();
             //deploy project
             //CustomerManager cm = new CustomerManager();

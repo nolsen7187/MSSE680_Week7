@@ -4,7 +4,7 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - Finish Flash Racing</title>
+    <title><%: Page.Title %> - </title>
     <asp:PlaceHolder runat="server">     
           <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>  
@@ -38,18 +38,8 @@
     </asp:ScriptManager>
     <header>
         <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">
-                    <a id="A2" runat="server" href="~/">
-                        <asp:Image ID="Logo" runat="server" ImageUrl="~/images/logo.jpg"
-                            BorderStyle="None" />
-                    </a>
-
-                    
-                </p>
-            </div>
             <div class="float-right">
-                <section id="login">
+                <!-- <section id="login">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul>
@@ -65,15 +55,26 @@
                             </p>
                         </LoggedInTemplate>
                     </asp:LoginView>
-                </section>
+                </section>-->
                 <nav>
                     <ul id="menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/About.aspx">About</a></li>
                     <li><a href="/Contact.aspx">Contact</a></li>
+                    <li><a href="/CustomerRegistration.aspx">Customer Registration</a></li>
                     <li><a href="/ItemList.aspx">Products</a></li>
                     </ul>
                 </nav>
+            </div>
+            <div class="float-right">
+                <p class="site-title">
+                    <a id="A2" runat="server" href="~/">
+                        <asp:Image ID="Logo" runat="server"  ImageUrl="~/images/logo.jpg"
+                            BorderStyle="None" />
+                    </a>
+
+                    
+                </p>
             </div>
         </div>
     </header>

@@ -14,6 +14,32 @@ namespace Service
     {
         private static Int16 actionType;
         public Customer localCust;
+        public bool Action(Object Class, int ActionType)
+        {
+            //getActionType(localXmlWriter, xmlFileName);
+
+            if (Class != null)
+            {
+                //localCust = Class;
+                var Repo = CRUDRepositoryConcreteFactory.CRUD<Customer>();
+                switch (ActionType)
+                {
+
+                    case 1://Create
+                        Repo.Create(localCust);
+                        break;
+                    case 2://Update
+                        Repo.Update(localCust);
+                        break;
+                    case 3://Delete
+                        Repo.Delete(localCust);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return true;
+        }
         public bool Action(Customer Class, int ActionType)
         {
             //getActionType(localXmlWriter, xmlFileName);

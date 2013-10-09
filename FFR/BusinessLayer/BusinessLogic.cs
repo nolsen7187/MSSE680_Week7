@@ -19,6 +19,7 @@ namespace BusinessLayer
         private int lclActionType;
         private XmlWriter localXMLWriter;
         private String localxmlFileName;
+        private Object lclObjectClass;
 
         public Facade(XmlWriter xmlWriter, string xmlFileName)
         {
@@ -31,6 +32,11 @@ namespace BusinessLayer
             this.lclClass = Class;
             this.lclActionType = ActionType;
         }
+        public Facade(Object Class, int ActionType)
+        {
+            this.lclObjectClass = Class;
+            this.lclActionType = ActionType;
+        }
         public void ProcessRequest()
         {
             if (localXMLWriter != null)
@@ -41,11 +47,14 @@ namespace BusinessLayer
                 this.localXMLWriter.Dispose();
                 this.localxmlFileName = "";
             }
-            else
+            else if (lclClass != null)
             {
                 performAction.Action(lclClass, lclActionType);
             }
-               
+            else
+            {
+                performAction.Action(lclObjectClass, lclActionType);
+            }
         }
     }
 }
