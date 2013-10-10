@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PresentationWebForms {
+namespace WebApp {
     
     
-    public partial class Customers {
+    public partial class CustomerRegistration {
         
         /// <summary>
         /// Head1 control.
