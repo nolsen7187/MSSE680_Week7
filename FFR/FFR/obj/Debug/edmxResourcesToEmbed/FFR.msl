@@ -30,20 +30,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="IsTypeOf(FFRModel.Employee)">
-        <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-          <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
-          <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
-          <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
-          <ScalarProperty Name="Employeetype" ColumnName="Employeetype" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Items">
       <EntityTypeMapping TypeName="IsTypeOf(FFRModel.Item)">
         <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
           <ScalarProperty Name="ItemId" ColumnName="ItemId" />
           <ScalarProperty Name="ItemName" ColumnName="ItemName" />
           <ScalarProperty Name="QuantityAvailable" ColumnName="QuantityAvailable" />
@@ -62,6 +52,37 @@
           <ScalarProperty Name="ItemId" ColumnName="ItemId" />
           <ScalarProperty Name="SalesId" ColumnName="SalesId" />
           <ScalarProperty Name="SalesItemTransId" ColumnName="SalesItemTransId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="FFRModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Employeetype" ColumnName="Employeetype" />
+          <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+          <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+          <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemCategories">
+      <EntityTypeMapping TypeName="FFRModel.ItemCategory">
+        <MappingFragment StoreEntitySet="ItemCategory">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ItemCategory1" ColumnName="ItemCategory" />
+          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebUserTables">
+      <EntityTypeMapping TypeName="FFRModel.WebUserTable">
+        <MappingFragment StoreEntitySet="WebUserTable">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

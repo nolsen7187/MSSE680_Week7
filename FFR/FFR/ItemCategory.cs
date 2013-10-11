@@ -12,19 +12,17 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class ItemCategory
     {
-        public Employee()
+        public ItemCategory()
         {
-            this.WebUserTables = new HashSet<WebUserTable>();
+            this.Items = new HashSet<Item>();
         }
     
-        public int EmployeeId { get; set; }
-        public string EmployeeFirstName { get; set; }
-        public string EmployeeLastName { get; set; }
-        public string EmployeePhone { get; set; }
-        public string Employeetype { get; set; }
+        public int ItemCategoryId { get; set; }
+        public string ItemCategory1 { get; set; }
+        public string Description { get; set; }
     
-        public virtual ICollection<WebUserTable> WebUserTables { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

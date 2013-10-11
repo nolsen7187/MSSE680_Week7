@@ -17,6 +17,7 @@ namespace DAL
         public Customer()
         {
             this.SalesHeaders = new HashSet<SalesHeader>();
+            this.WebUserTables = new HashSet<WebUserTable>();
         }
     
         public int CustomerId { get; set; }
@@ -32,5 +33,6 @@ namespace DAL
         public string Street { get; set; }
     
         public virtual ICollection<SalesHeader> SalesHeaders { get; set; }
+        public virtual ICollection<WebUserTable> WebUserTables { get; set; }
     }
 }
