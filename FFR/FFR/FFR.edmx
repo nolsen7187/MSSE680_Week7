@@ -5,190 +5,190 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FFRModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="FFRModelStoreContainer">
-    <EntitySet Name="Customers" EntityType="FFRModel.Store.Customers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SalesHeaders" EntityType="FFRModel.Store.SalesHeaders" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Items" EntityType="FFRModel.Store.Items" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SalesItems" EntityType="FFRModel.Store.SalesItems" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Employees" EntityType="FFRModel.Store.Employees" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ItemCategories" EntityType="FFRModel.Store.ItemCategories" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="WebUserTables" EntityType="FFRModel.Store.WebUserTables" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_SalesHeader_Customer" Association="FFRModel.Store.FK_SalesHeader_Customer">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="SalesHeader" EntitySet="SalesHeaders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SalesItems_Items" Association="FFRModel.Store.FK_SalesItems_Items">
-      <End Role="Item" EntitySet="Items" />
-      <End Role="SalesItem" EntitySet="SalesItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SalesItems_SalesHeaders" Association="FFRModel.Store.FK_SalesItems_SalesHeaders">
-      <End Role="SalesHeader" EntitySet="SalesHeaders" />
-      <End Role="SalesItem" EntitySet="SalesItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_WebUserTable_Customers" Association="FFRModel.Store.FK_WebUserTable_Customers">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="WebUserTable" EntitySet="WebUserTables" />
-    </AssociationSet>
-    <AssociationSet Name="FK_WebUserTable_Employees" Association="FFRModel.Store.FK_WebUserTable_Employees">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="WebUserTable" EntitySet="WebUserTables" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Items_ItemCategory" Association="FFRModel.Store.FK_Items_ItemCategory">
-      <End Role="ItemCategory" EntitySet="ItemCategories" />
-      <End Role="Item" EntitySet="Items" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Customers">
-    <Key>
-      <PropertyRef Name="CustomerId" />
-    </Key>
-    <Property Name="CustomerId" Type="int" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="LastName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="Address" Type="varchar" Nullable="true" MaxLength="200" />
-    <Property Name="City" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="State" Type="varchar" Nullable="true" MaxLength="2" />
-    <Property Name="Zip" Type="varchar" Nullable="true" MaxLength="10" />
-    <Property Name="Suite" Type="varchar" Nullable="true" MaxLength="20" />
-    <Property Name="Phone" Type="varchar" Nullable="true" MaxLength="20" />
-    <Property Name="Email" Type="varchar" Nullable="true" MaxLength="100" />
-    <Property Name="Street" Type="varchar" Nullable="true" MaxLength="100" />
-  </EntityType>
-  <EntityType Name="SalesHeaders">
-    <Key>
-      <PropertyRef Name="SalesId" />
-    </Key>
-    <Property Name="SalesId" Type="int" Nullable="false" />
-    <Property Name="CustomerId" Type="int" Nullable="true" />
-    <Property Name="OrderSalesBalance" Type="decimal" Nullable="true" Precision="10" Scale="0" />
-    <Property Name="OrderTaxAmount" Type="decimal" Nullable="true" Precision="10" Scale="0" />
-    <Property Name="OrderTotal" Type="decimal" Nullable="true" Precision="10" Scale="0" />
-    <Property Name="SalesStatus" Type="varchar" Nullable="true" MaxLength="30" />
-  </EntityType>
-  <EntityType Name="Items">
-    <Key>
-      <PropertyRef Name="ItemId" />
-    </Key>
-    <Property Name="ItemId" Type="int" Nullable="false" />
-    <Property Name="ItemName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="QuantityAvailable" Type="int" Nullable="true" />
-    <Property Name="ItemCost" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="Price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="ItemCategoryId" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="SalesItems">
-    <Key>
-      <PropertyRef Name="SalesItemTransId" />
-    </Key>
-    <Property Name="SalesItemTransId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SalesId" Type="int" Nullable="false" />
-    <Property Name="ItemId" Type="int" Nullable="false" />
-    <Property Name="Qty" Type="int" Nullable="true" />
-    <Property Name="Price" Type="decimal" Nullable="true" Precision="19" Scale="4" />
-    <Property Name="LineAmount" Type="decimal" Nullable="true" Precision="19" Scale="4" />
-    <Property Name="ItemName" Type="varchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Employees">
-    <Key>
-      <PropertyRef Name="EmployeeId" />
-    </Key>
-    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EmployeeFirstName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="EmployeeLastName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="EmployeePhone" Type="varchar" Nullable="true" MaxLength="20" />
-    <Property Name="Employeetype" Type="varchar" Nullable="true" MaxLength="10" />
-  </EntityType>
-  <EntityType Name="ItemCategories">
-    <Key>
-      <PropertyRef Name="ItemCategoryId" />
-    </Key>
-    <Property Name="ItemCategoryId" Type="int" Nullable="false" />
-    <Property Name="ItemCategory1" Type="nchar" Nullable="true" MaxLength="20" />
-    <Property Name="Description" Type="nchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="WebUserTables">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="UserName" Type="nchar" Nullable="false" MaxLength="20" />
-    <Property Name="Password" Type="nchar" Nullable="false" MaxLength="20" />
-    <Property Name="CustomerId" Type="int" Nullable="true" />
-    <Property Name="EmployeeId" Type="int" Nullable="true" />
-  </EntityType>
-  <Association Name="FK_SalesHeader_Customer">
-    <End Role="Customer" Type="FFRModel.Store.Customers" Multiplicity="0..1" />
-    <End Role="SalesHeader" Type="FFRModel.Store.SalesHeaders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="CustomerId" />
-      </Principal>
-      <Dependent Role="SalesHeader">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SalesItems_Items">
-    <End Role="Item" Type="FFRModel.Store.Items" Multiplicity="1" />
-    <End Role="SalesItem" Type="FFRModel.Store.SalesItems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Item">
-        <PropertyRef Name="ItemId" />
-      </Principal>
-      <Dependent Role="SalesItem">
-        <PropertyRef Name="ItemId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SalesItems_SalesHeaders">
-    <End Role="SalesHeader" Type="FFRModel.Store.SalesHeaders" Multiplicity="1" />
-    <End Role="SalesItem" Type="FFRModel.Store.SalesItems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SalesHeader">
-        <PropertyRef Name="SalesId" />
-      </Principal>
-      <Dependent Role="SalesItem">
-        <PropertyRef Name="SalesId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_WebUserTable_Customers">
-    <End Role="Customer" Type="FFRModel.Store.Customers" Multiplicity="0..1" />
-    <End Role="WebUserTable" Type="FFRModel.Store.WebUserTables" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="CustomerId" />
-      </Principal>
-      <Dependent Role="WebUserTable">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_WebUserTable_Employees">
-    <End Role="Employee" Type="FFRModel.Store.Employees" Multiplicity="0..1" />
-    <End Role="WebUserTable" Type="FFRModel.Store.WebUserTables" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeId" />
-      </Principal>
-      <Dependent Role="WebUserTable">
-        <PropertyRef Name="EmployeeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Items_ItemCategory">
-    <End Role="ItemCategory" Type="FFRModel.Store.ItemCategories" Multiplicity="0..1" />
-    <End Role="Item" Type="FFRModel.Store.Items" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemCategory">
-        <PropertyRef Name="ItemCategoryId" />
-      </Principal>
-      <Dependent Role="Item">
-        <PropertyRef Name="ItemCategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+        <EntityContainer Name="FFRModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="FFRModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employees" EntityType="FFRModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemCategories" EntityType="FFRModel.Store.ItemCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Items" EntityType="FFRModel.Store.Items" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SalesHeaders" EntityType="FFRModel.Store.SalesHeaders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SalesItems" EntityType="FFRModel.Store.SalesItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebUserTables" EntityType="FFRModel.Store.WebUserTables" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Items_ItemCategory" Association="FFRModel.Store.FK_Items_ItemCategory">
+            <End Role="ItemCategories" EntitySet="ItemCategories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesHeader_Customer" Association="FFRModel.Store.FK_SalesHeader_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="SalesHeaders" EntitySet="SalesHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesItems_Items" Association="FFRModel.Store.FK_SalesItems_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="SalesItems" EntitySet="SalesItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesItems_SalesHeaders" Association="FFRModel.Store.FK_SalesItems_SalesHeaders">
+            <End Role="SalesHeaders" EntitySet="SalesHeaders" />
+            <End Role="SalesItems" EntitySet="SalesItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebUserTable_Customers" Association="FFRModel.Store.FK_WebUserTable_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="WebUserTables" EntitySet="WebUserTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebUserTable_Employees" Association="FFRModel.Store.FK_WebUserTable_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WebUserTables" EntitySet="WebUserTables" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="Zip" Type="varchar" MaxLength="10" />
+          <Property Name="Suite" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Street" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeLastName" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeePhone" Type="varchar" MaxLength="20" />
+          <Property Name="Employeetype" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ItemCategories">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Name="ItemCategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="nchar" MaxLength="20" />
+          <Property Name="Description" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+          <Property Name="QuantityAvailable" Type="int" />
+          <Property Name="ItemCost" Type="decimal" />
+          <Property Name="Price" Type="decimal" />
+          <Property Name="ItemCategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="SalesHeaders">
+          <Key>
+            <PropertyRef Name="SalesId" />
+          </Key>
+          <Property Name="SalesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="OrderSalesBalance" Type="decimal" Precision="10" />
+          <Property Name="OrderTaxAmount" Type="decimal" Precision="10" />
+          <Property Name="OrderTotal" Type="decimal" Precision="10" />
+          <Property Name="SalesStatus" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="SalesItems">
+          <Key>
+            <PropertyRef Name="SalesItemTransId" />
+          </Key>
+          <Property Name="SalesItemTransId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SalesId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="LineAmount" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebUserTables">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nchar" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="nchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Items_ItemCategory">
+          <End Role="ItemCategories" Type="FFRModel.Store.ItemCategories" Multiplicity="0..1" />
+          <End Role="Items" Type="FFRModel.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategories">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ItemCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesHeader_Customer">
+          <End Role="Customers" Type="FFRModel.Store.Customers" Multiplicity="0..1" />
+          <End Role="SalesHeaders" Type="FFRModel.Store.SalesHeaders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="SalesHeaders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesItems_Items">
+          <End Role="Items" Type="FFRModel.Store.Items" Multiplicity="1" />
+          <End Role="SalesItems" Type="FFRModel.Store.SalesItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="SalesItems">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesItems_SalesHeaders">
+          <End Role="SalesHeaders" Type="FFRModel.Store.SalesHeaders" Multiplicity="1" />
+          <End Role="SalesItems" Type="FFRModel.Store.SalesItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesHeaders">
+              <PropertyRef Name="SalesId" />
+            </Principal>
+            <Dependent Role="SalesItems">
+              <PropertyRef Name="SalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebUserTable_Customers">
+          <End Role="Customers" Type="FFRModel.Store.Customers" Multiplicity="0..1" />
+          <End Role="WebUserTables" Type="FFRModel.Store.WebUserTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="WebUserTables">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebUserTable_Employees">
+          <End Role="Employees" Type="FFRModel.Store.Employees" Multiplicity="0..1" />
+          <End Role="WebUserTables" Type="FFRModel.Store.WebUserTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="WebUserTables">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FFRModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -210,7 +210,6 @@
             <End Role="SalesItem" EntitySet="SalesItems" />
           </AssociationSet>
           <EntitySet Name="Employees" EntityType="FFRModel.Employee" />
-          <EntitySet Name="ItemCategories" EntityType="FFRModel.ItemCategory" />
           <EntitySet Name="WebUserTables" EntityType="FFRModel.WebUserTable" />
           <AssociationSet Name="FK_WebUserTable_Customers" Association="FFRModel.FK_WebUserTable_Customers">
             <End Role="Customer" EntitySet="Customers" />
@@ -220,6 +219,7 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="WebUserTable" EntitySet="WebUserTables" />
           </AssociationSet>
+          <EntitySet Name="ItemCategories" EntityType="FFRModel.ItemCategory" />
           <AssociationSet Name="FK_Items_ItemCategory" Association="FFRModel.FK_Items_ItemCategory">
             <End Role="ItemCategory" EntitySet="ItemCategories" />
             <End Role="Item" EntitySet="Items" />
@@ -330,15 +330,6 @@
           <Property Type="String" Name="Employeetype" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="WebUserTables" Relationship="FFRModel.FK_WebUserTable_Employees" FromRole="Employee" ToRole="WebUserTable" />
         </EntityType>
-        <EntityType Name="ItemCategory">
-          <Key>
-            <PropertyRef Name="ItemCategoryId" />
-          </Key>
-          <Property Type="Int32" Name="ItemCategoryId" Nullable="false" />
-          <Property Type="String" Name="ItemCategory1" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Items" Relationship="FFRModel.FK_Items_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
-        </EntityType>
         <EntityType Name="WebUserTable">
           <Key>
             <PropertyRef Name="UserId" />
@@ -375,6 +366,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ItemCategory">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Type="Int32" Name="ItemCategoryId" Nullable="false" />
+          <Property Type="String" Name="Category" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="FFRModel.FK_Items_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
+        </EntityType>
         <Association Name="FK_Items_ItemCategory">
           <End Type="FFRModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
           <End Type="FFRModel.Item" Role="Item" Multiplicity="*" />
@@ -458,15 +458,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ItemCategories">
-      <EntityTypeMapping TypeName="IsTypeOf(FFRModel.ItemCategory)">
-        <MappingFragment StoreEntitySet="ItemCategories">
-          <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
-          <ScalarProperty Name="ItemCategory1" ColumnName="ItemCategory1" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="WebUserTables">
       <EntityTypeMapping TypeName="IsTypeOf(FFRModel.WebUserTable)">
         <MappingFragment StoreEntitySet="WebUserTables">
@@ -478,6 +469,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="ItemCategories">
+            <EntityTypeMapping TypeName="FFRModel.ItemCategory">
+              <MappingFragment StoreEntitySet="ItemCategories">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

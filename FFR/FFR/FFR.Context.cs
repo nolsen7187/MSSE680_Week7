@@ -30,7 +30,7 @@ namespace DAL
         public DbSet<Item> Items { get; set; }
         public DbSet<SalesItem> SalesItems { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<ItemCategory> ItemCategories { get; set; }
         public DbSet<WebUserTable> WebUserTables { get; set; }
+        public DbSet<ItemCategory> ItemCategories { get; set; }
     }
 }

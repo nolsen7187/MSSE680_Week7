@@ -18,7 +18,6 @@
       <End Role="SalesItem" EntitySet="SalesItems" />
     </AssociationSet>
     <EntitySet Name="Employees" EntityType="FFRModel.Employee" />
-    <EntitySet Name="ItemCategories" EntityType="FFRModel.ItemCategory" />
     <EntitySet Name="WebUserTables" EntityType="FFRModel.WebUserTable" />
     <AssociationSet Name="FK_WebUserTable_Customers" Association="FFRModel.FK_WebUserTable_Customers">
       <End Role="Customer" EntitySet="Customers" />
@@ -28,6 +27,7 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="WebUserTable" EntitySet="WebUserTables" />
     </AssociationSet>
+    <EntitySet Name="ItemCategories" EntityType="FFRModel.ItemCategory" />
     <AssociationSet Name="FK_Items_ItemCategory" Association="FFRModel.FK_Items_ItemCategory">
       <End Role="ItemCategory" EntitySet="ItemCategories" />
       <End Role="Item" EntitySet="Items" />
@@ -138,15 +138,6 @@
     <Property Type="String" Name="Employeetype" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="WebUserTables" Relationship="FFRModel.FK_WebUserTable_Employees" FromRole="Employee" ToRole="WebUserTable" />
   </EntityType>
-  <EntityType Name="ItemCategory">
-    <Key>
-      <PropertyRef Name="ItemCategoryId" />
-    </Key>
-    <Property Type="Int32" Name="ItemCategoryId" Nullable="false" />
-    <Property Type="String" Name="ItemCategory1" MaxLength="20" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="Description" MaxLength="50" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="Items" Relationship="FFRModel.FK_Items_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
-  </EntityType>
   <EntityType Name="WebUserTable">
     <Key>
       <PropertyRef Name="UserId" />
@@ -183,6 +174,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="ItemCategory">
+    <Key>
+      <PropertyRef Name="ItemCategoryId" />
+    </Key>
+    <Property Type="Int32" Name="ItemCategoryId" Nullable="false" />
+    <Property Type="String" Name="Category" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Items" Relationship="FFRModel.FK_Items_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
+  </EntityType>
   <Association Name="FK_Items_ItemCategory">
     <End Type="FFRModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
     <End Type="FFRModel.Item" Role="Item" Multiplicity="*" />

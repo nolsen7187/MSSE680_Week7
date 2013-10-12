@@ -50,46 +50,42 @@ namespace FFR_Test
         {
             FFREntities ffrDb = new FFREntities();
 
-            Customer savedCustomer = (from d in ffrDb.Customers where d.CustomerId == 2 select d).Single();
+            Customer savedCustomer = (from d in ffrDb.Customers where d.FirstName == "Nick" select d).Single();
 
-            Assert.AreEqual(savedCustomer.CustomerId, 2);
+            Assert.AreEqual(savedCustomer.FirstName, "Nick");
         }
         [TestMethod]
-        public void DeleteSalesHeader()
+        public void DeleteItemCategory()
         {
             FFREntities ffrDb = new FFREntities();
+            ItemCategory itemCategory = new ItemCategory();
 
-            SalesHeader salesHeader = new SalesHeader();
-            salesHeader.SalesStatus = "Delete";
-            salesHeader.OrderSalesBalance = 50;
-            salesHeader.OrderTaxAmount = 5;
-            salesHeader.OrderTotal = salesHeader.OrderSalesBalance + salesHeader.OrderTaxAmount;
+            itemCategory.Category = "Delete";
+            itemCategory.Description = "Delete";
 
-            ffrDb.SalesHeaders.Add(salesHeader);
+            ffrDb.ItemCategories.Add(itemCategory);
             ffrDb.SaveChanges();
 
-            SalesHeader deleteSalesHeader = (from d in ffrDb.SalesHeaders where d.SalesId == 2 select d).Single();
-            ffrDb.SalesHeaders.Remove(deleteSalesHeader);
+            ItemCategory deleteItemCategory = (from d in ffrDb.ItemCategories where d.Category == "Delete" select d).Single();
+            ffrDb.ItemCategories.Remove(deleteItemCategory);
             ffrDb.SaveChanges();
         }
         [TestMethod]
-        public void UpdateSalesHeader()
+        public void UpdateItemCategory()
         {
             FFREntities ffrDb = new FFREntities();
+            ItemCategory itemCategory = new ItemCategory();
 
-            SalesHeader salesHeader = new SalesHeader();
-            salesHeader.CustomerId = 1;
-            salesHeader.SalesStatus = "Update";
-            salesHeader.OrderSalesBalance = 50;
-            salesHeader.OrderTaxAmount = 5;
-            salesHeader.OrderTotal = salesHeader.OrderSalesBalance + salesHeader.OrderTaxAmount;
+            itemCategory.Category = "Update";
+            itemCategory.Description = "Update";
 
-            ffrDb.SalesHeaders.Add(salesHeader);
+            ffrDb.ItemCategories.Add(itemCategory);
             ffrDb.SaveChanges();
 
-            SalesHeader updateSalesHeader = (from d in ffrDb.SalesHeaders where d.SalesStatus == "Update" select d).Single();
-            updateSalesHeader.SalesStatus = "Record has been updated!";
+            ItemCategory updateItemCategory = (from d in ffrDb.ItemCategories where d.Category == "Update" select d).Single();
+            updateItemCategory.Description = "Item Category has been updated";
             ffrDb.SaveChanges();
+        
         }
         [TestMethod]
         public void CreateCustomerUsingRepository()

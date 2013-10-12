@@ -20,7 +20,7 @@ namespace DAL
         }
     
         public int ItemCategoryId { get; set; }
-        public string ItemCategory1 { get; set; }
+        public string Category { get; set; }
         public string Description { get; set; }
     
         public virtual ICollection<Item> Items { get; set; }
