@@ -70,10 +70,10 @@ namespace PresentationWebForms
         {
 
         }
-        public IQueryable<Item> GetItems()
+        public IQueryable<ItemCategory> GetItemCategories()
         {
-            var db = new PresentationWebForms.Models.ItemContext();
-            IQueryable<Item> query = db.Items;
+            var db = new PresentationWebForms.Models.DataContext();
+            IQueryable<ItemCategory> query = db.ItemCategories;
             return query;
 
         }

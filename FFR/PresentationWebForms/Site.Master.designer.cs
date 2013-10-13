@@ -40,13 +40,13 @@ namespace PresentationWebForms {
         protected global::System.Web.UI.WebControls.Image Logo;
         
         /// <summary>
-        /// itemList control.
+        /// categoryList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView itemList;
+        protected global::System.Web.UI.WebControls.ListView categoryList;
         
         /// <summary>
         /// FeaturedContent control.

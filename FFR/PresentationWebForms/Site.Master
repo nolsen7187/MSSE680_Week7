@@ -8,7 +8,7 @@
     <asp:PlaceHolder runat="server">     
           <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>  
-    <webopt:BundleReference runat="server" Path="~/Content/css" 
+    <webopt:BundleReference runat="server" Path="~/Content/css" ></webopt:BundleReference>
 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
@@ -62,8 +62,8 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/About.aspx">About</a></li>
                     <li><a href="/Contact.aspx">Contact</a></li>
-                    <li><a href="/CustomerRegistration.aspx">Customer Registration</a></li>
                     <li><a href="/ItemList.aspx">Products</a></li>
+                    <li><a href="/CustomerRegistration.aspx">Customer Registration</a></li>
                     </ul>
                 </nav>
             </div>
@@ -83,25 +83,21 @@
 
 
                 <section style="text-align: center; background-color: #fff">
-                    <asp:ListView ID="itemList"  
-                        ItemType="PresentationWebForms.Models.Item" 
+                    <asp:ListView ID="categoryList"  
+                        ItemType="PresentationWebForms.Models.ItemCategory" 
                         runat="server"
-                        SelectMethod="GetItems" >
+                        SelectMethod="GetItemCategories" >
                         <ItemTemplate>
                             <b style="font-size: large; font-style: normal">
-                            <a href="/ItemList.aspx?id=<%#:  Item.ItemId %>">
-                            <%#: Item.ItemName %>
+                            <a href="/ProductList.aspx?id=<%#: Item.ItemCategoryId %>">
+                            <%#: Item.Category %>
                             </a>
                             </b>
                         </ItemTemplate>
                         <ItemSeparatorTemplate> - </ItemSeparatorTemplate>
                     </asp:ListView>
                 </section> 
-
-
-
-
-
+        
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />

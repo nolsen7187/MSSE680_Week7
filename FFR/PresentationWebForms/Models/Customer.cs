@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -12,7 +13,7 @@ namespace PresentationWebForms.Models
             this.SalesHeaders = new HashSet<SalesHeader>();
             this.WebUserTables = new HashSet<WebUserTable>();
         }
-
+        [Required]
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
