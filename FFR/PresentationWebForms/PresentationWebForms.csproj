@@ -190,12 +190,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CustomerRegistration.aspx" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\newlogo.jpg" />
     <Content Include="ItemDetails.aspx" />
     <Content Include="ItemList.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\logo.jpg" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />

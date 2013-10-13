@@ -3,9 +3,15 @@
   <EntityContainer Name="FFRModelStoreContainer">
     <EntitySet Name="Customers" EntityType="FFRModel.Store.Customers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Employees" EntityType="FFRModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemCategories" EntityType="FFRModel.Store.ItemCategories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Items" EntityType="FFRModel.Store.Items" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SalesHeaders" EntityType="FFRModel.Store.SalesHeaders" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SalesItems" EntityType="FFRModel.Store.SalesItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebUserTables" EntityType="FFRModel.Store.WebUserTables" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Items_ItemCategory" Association="FFRModel.Store.FK_Items_ItemCategory">
+      <End Role="ItemCategories" EntitySet="ItemCategories" />
+      <End Role="Items" EntitySet="Items" />
+    </AssociationSet>
     <AssociationSet Name="FK_SalesHeader_Customer" Association="FFRModel.Store.FK_SalesHeader_Customer">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="SalesHeaders" EntitySet="SalesHeaders" />
@@ -18,6 +24,14 @@
       <End Role="SalesHeaders" EntitySet="SalesHeaders" />
       <End Role="SalesItems" EntitySet="SalesItems" />
     </AssociationSet>
+    <AssociationSet Name="FK_WebUserTable_Customers" Association="FFRModel.Store.FK_WebUserTable_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="WebUserTables" EntitySet="WebUserTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WebUserTable_Employees" Association="FFRModel.Store.FK_WebUserTable_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="WebUserTables" EntitySet="WebUserTables" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customers">
     <Key>
@@ -28,12 +42,12 @@
     <Property Name="LastName" Type="varchar" MaxLength="50" />
     <Property Name="Address" Type="varchar" MaxLength="200" />
     <Property Name="City" Type="varchar" MaxLength="50" />
-    <Property Name="Street" Type="varchar" MaxLength="100" />
     <Property Name="State" Type="varchar" MaxLength="2" />
     <Property Name="Zip" Type="varchar" MaxLength="10" />
     <Property Name="Suite" Type="varchar" MaxLength="20" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Street" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Employees">
     <Key>
@@ -45,6 +59,14 @@
     <Property Name="EmployeePhone" Type="varchar" MaxLength="20" />
     <Property Name="Employeetype" Type="varchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="ItemCategories">
+    <Key>
+      <PropertyRef Name="ItemCategoryId" />
+    </Key>
+    <Property Name="ItemCategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="nchar" MaxLength="20" />
+    <Property Name="Description" Type="nchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Items">
     <Key>
       <PropertyRef Name="ItemId" />
@@ -54,6 +76,7 @@
     <Property Name="QuantityAvailable" Type="int" />
     <Property Name="ItemCost" Type="decimal" />
     <Property Name="Price" Type="decimal" />
+    <Property Name="ItemCategoryId" Type="int" />
   </EntityType>
   <EntityType Name="SalesHeaders">
     <Key>
@@ -78,6 +101,28 @@
     <Property Name="LineAmount" Type="decimal" Precision="19" Scale="4" />
     <Property Name="ItemName" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="WebUserTables">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="EmployeeId" Type="int" />
+  </EntityType>
+  <Association Name="FK_Items_ItemCategory">
+    <End Role="ItemCategories" Type="FFRModel.Store.ItemCategories" Multiplicity="0..1" />
+    <End Role="Items" Type="FFRModel.Store.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCategories">
+        <PropertyRef Name="ItemCategoryId" />
+      </Principal>
+      <Dependent Role="Items">
+        <PropertyRef Name="ItemCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SalesHeader_Customer">
     <End Role="Customers" Type="FFRModel.Store.Customers" Multiplicity="0..1" />
     <End Role="SalesHeaders" Type="FFRModel.Store.SalesHeaders" Multiplicity="*" />
@@ -111,6 +156,30 @@
       </Principal>
       <Dependent Role="SalesItems">
         <PropertyRef Name="SalesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WebUserTable_Customers">
+    <End Role="Customers" Type="FFRModel.Store.Customers" Multiplicity="0..1" />
+    <End Role="WebUserTables" Type="FFRModel.Store.WebUserTables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="WebUserTables">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WebUserTable_Employees">
+    <End Role="Employees" Type="FFRModel.Store.Employees" Multiplicity="0..1" />
+    <End Role="WebUserTables" Type="FFRModel.Store.WebUserTables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="WebUserTables">
+        <PropertyRef Name="EmployeeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -70,7 +70,7 @@
             <div class="float-right">
                 <p class="site-title">
                     <a id="A2" runat="server" href="~/">
-                        <asp:Image ID="Logo" runat="server"  ImageUrl="~/images/logo.jpg"
+                        <asp:Image ID="Logo" runat="server"  ImageUrl="~/images/newlogo.jpg"
                             BorderStyle="None" />
                     </a>
 
