@@ -162,10 +162,10 @@ namespace FFR_Test
 
 
             Item createItem = new Item();
-            createItem.ItemName = "FP Gray Turbo";
+            createItem.ItemName = "DeleteItem";
             createItem.Price = 1200;
             createItem.ItemCost = 550;
-            createItem.ItemId = 2;
+            //createItem.ItemId = 2;
 
             itemRepo.Create(createItem);
             itemRepo.Dispose();
@@ -180,7 +180,7 @@ namespace FFR_Test
             //localContext.Database.ExecuteSqlCommand(String.Format("DELETE {0}", sqlClause));
             //List<Item> myList = deleteItemRepo.GetBySpecificKey("ItemId", 2);
 
-            Item deleteItem = (from d in deleteItemRepo.GetAll() where d.ItemId == 2 select d).Single();
+            Item deleteItem = (from d in deleteItemRepo.GetAll() where d.ItemName == "DeleteItem" select d).Single();
             //string sqlClause = Query.ToString();
             //deleteItemRepo.Delete(Query);
             //deleteItem.ItemId = 2;
