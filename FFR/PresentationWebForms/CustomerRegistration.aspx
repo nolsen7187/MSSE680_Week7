@@ -70,6 +70,13 @@
                 <asp:TextBox ID="EmailTextBox" runat="server" Width="275px"></asp:TextBox>
             </td>
         </tr>
-    </table>
+        <tr>
+            <td class="auto-style1">
         <asp:Button ID="CustomerButton" runat="server" OnClick="Button1_Click" Text="Register" />
-    </asp:Content>
+            </td>
+            <td class="auto-style2">
+                <asp:Label ID="SuccessLabel" runat="server" ForeColor="Red" Width="275px"></asp:Label>
+            </td>
+        </tr>
+    </table>
+</asp:Content>

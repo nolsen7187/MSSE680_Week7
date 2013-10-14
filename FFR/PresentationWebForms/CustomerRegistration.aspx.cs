@@ -34,8 +34,16 @@ namespace PresentationWebForms
             int ActionType = 1;
 
             Facade newFacade = new Facade(uICustomer, ActionType);
-            //            Facade newFacade = new Facade(uICustomer, ActionType);
             newFacade.ProcessRequest();
+
+            if (Page.IsValid)
+            {
+                SuccessLabel.Text = "You have successfully registered on the FFR's website";
+            }
+            else
+            {
+                SuccessLabel.Text = "Failed to registers on FFR's website, please verify you have entered all necessary information.";
+            }
             //deploy project
             //CustomerManager cm = new CustomerManager();
             //cm.Insert(uICustomer);
