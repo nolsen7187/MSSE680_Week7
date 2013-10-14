@@ -34,10 +34,10 @@
                                         <tr>          
                                             <td>&nbsp;</td>          
                                             <td>
-                                                <a href="ItemDetails.aspx?productID=<%#:Item.ItemId%>"></a> 
+                                                <a href="ItemDetails.aspx?ItemId=<%#:Item.ItemId%>"></a> 
                                             </td>
                                             <td>
-                                                <a href="ProductDetails.aspx?productID=<%#:Item.ItemId%>">
+                                                <a href="ItemDetails.aspx?ItemId=<%#:Item.ItemId%>">
                                                     <span class="ItemName">
                                                         <%#:Item.ItemName%>
                                                     </span>

@@ -32,10 +32,10 @@ namespace BusinessLayer
             this.lclClass = Class;
             this.lclActionType = ActionType;
         }
-        public Facade(Object Class, int ActionType)
+        public Facade(Customer Class)
         {
             this.lclObjectClass = Class;
-            this.lclActionType = ActionType;
+            //this.lclActionType = ActionType;
         }
         public void ProcessRequest()
         {

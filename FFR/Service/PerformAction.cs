@@ -21,18 +21,18 @@ namespace Service
             if (Class != null)
             {
                 //localCust = Class;
-                var Repo = CRUDRepositoryConcreteFactory.CRUD<Customer>();
+                var Repo = CRUDRepositoryConcreteFactory.CRUD<Object>();
                 switch (ActionType)
                 {
 
                     case 1://Create
-                        Repo.Create(localCust);
+                        Repo.Create(Class);
                         break;
                     case 2://Update
-                        Repo.Update(localCust);
+                        Repo.Update(Class);
                         break;
                     case 3://Delete
-                        Repo.Delete(localCust);
+                        Repo.Delete(Class);
                         break;
                     default:
                         break;

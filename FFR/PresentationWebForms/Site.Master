@@ -80,8 +80,7 @@
         </div>
     </header>
     <div id="body">
-
-
+        
                 <section style="text-align: center; background-color: #fff">
                     <asp:ListView ID="categoryList"  
                         ItemType="PresentationWebForms.Models.ItemCategory" 

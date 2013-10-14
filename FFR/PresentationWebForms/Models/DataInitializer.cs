@@ -23,7 +23,7 @@ namespace PresentationWebForms.Models
             var customers = new List<Customer> {
                 new Customer
                 {
-                    CustomerId = 15,
+                    CustomerId = 25,
                     FirstName = "Master",
                     LastName = "Yoda",
                     City = "Hoth",
@@ -36,9 +36,9 @@ namespace PresentationWebForms.Models
                 },
                 new Customer
                 {
-                    CustomerId = 16,
+                    CustomerId = 26,
                     FirstName = "Master",
-                    LastName = "Yoda",
+                    LastName = "ObiWan",
                     City = "Hoth",
                     State = "CO",
                     Zip = "80012",
@@ -57,7 +57,7 @@ namespace PresentationWebForms.Models
             var employees = new List<Employee> {
                 new Employee
                 {
-                    EmployeeId = 15,
+                    EmployeeId = 25,
                     EmployeeFirstName = "Bruce",
                     EmployeeLastName = "Olsen",
                     EmployeePhone = "3031234567",
@@ -65,7 +65,7 @@ namespace PresentationWebForms.Models
                 },
                 new Employee
                 {
-                    EmployeeId = 16,
+                    EmployeeId = 26,
                     EmployeeFirstName = "Maurice",
                     EmployeeLastName = "Olsen",
                     EmployeePhone = "3031234567",
@@ -81,19 +81,19 @@ namespace PresentationWebForms.Models
             var itemCategoies = new List<ItemCategory> {
                 new ItemCategory
                 {
-                ItemCategoryId = 1,
+                ItemCategoryId = 21,
                 Category = "Engine",
                 Description = "Engine Performance Modification"
                 },
                 new ItemCategory
                 {
-                ItemCategoryId = 2,
+                ItemCategoryId = 22,
                 Category = "Exhaust",
                 Description = "Exhaust Performance Modification"
                 },
                 new ItemCategory
                 {
-                ItemCategoryId = 3,
+                ItemCategoryId = 23,
                 Category = "Suspension",
                 Description = "Suspension Performance Modification"
                 }                
@@ -108,51 +108,51 @@ namespace PresentationWebForms.Models
             var items = new List<Item> {
                 new Item
                 {
-                    ItemId = 1,
+                    ItemId = 21,
                     ItemName = "FP Green",
                     Price = 900,
                     QuantityAvailable = 10,
-                    ItemCategoryId =  1
+                    ItemCategoryId =  21
                 },
                 new Item
                 {
-                    ItemId =2,
+                    ItemId = 22,
                     ItemName = "FP Red",
                     Price = 1200,
                     QuantityAvailable = 10,
-                    ItemCategoryId =  1
+                    ItemCategoryId =  21
                 },
                 new Item
                 {
-                    ItemId =3,
+                    ItemId = 23,
                     ItemName = "Borla Catback Exhaust",
                     Price = 500,
                     QuantityAvailable = 10,
-                    ItemCategoryId =  2
+                    ItemCategoryId =  22
                 },      
                 new Item
                 {
-                    ItemId =4,
+                    ItemId = 24,
                     ItemName = "Magnaflow Catback Exhaust",
                     Price = 600,
                     QuantityAvailable = 10,
-                    ItemCategoryId =  2
+                    ItemCategoryId =  22
                 },       
                 new Item
                 {
-                    ItemId = 5,
+                    ItemId = 25,
                     ItemName = "UR Front Sway Bar",
                     Price = 200,
                     QuantityAvailable = 10,
-                    ItemCategoryId =  3
+                    ItemCategoryId =  23
                 },      
                 new Item
                 {
-                    ItemId = 6,
+                    ItemId = 26,
                     ItemName = "UR Rear Sway Bar",
                     Price = 200,
                     QuantityAvailable = 10,
-                    ItemCategoryId =  3
+                    ItemCategoryId =  23
                 },          
             };
 
@@ -163,8 +163,8 @@ namespace PresentationWebForms.Models
             var salesHeaders = new List<SalesHeader> {
                 new SalesHeader
                 {
-                    SalesId = 1,
-                    CustomerId = 15,
+                    SalesId = 21,
+                    CustomerId = 25,
                     OrderSalesBalance = 1400,
                     OrderTaxAmount = 100,
                     OrderTotal = 1500
@@ -179,18 +179,18 @@ namespace PresentationWebForms.Models
             var salesItems = new List<SalesItem> {
                 new SalesItem
                 {
-                    SalesItemTransId = 1,
-                    SalesId = 1,
-                    ItemId = 2,
+                    SalesItemTransId = 21,
+                    SalesId = 21,
+                    ItemId = 22,
                     Qty = 1,
                     Price = 1200
                    
                 },
                 new SalesItem
                 {
-                    SalesItemTransId = 2,
-                    SalesId = 1,
-                    ItemId = 6,
+                    SalesItemTransId = 22,
+                    SalesId = 21,
+                    ItemId = 26,
                     Qty = 1,
                     Price = 200
                 }
@@ -204,18 +204,18 @@ namespace PresentationWebForms.Models
             var webUsers = new List<WebUserTable> {
                 new WebUserTable
                 {
-                    UserId = 0,
+                    UserId = 20,
                     UserName = "yoda",
                     Password = "Pass@word1",
-                    CustomerId = 15
+                    CustomerId = 25
                    
                 },
                 new WebUserTable
                 {
-                    UserId = 0,
+                    UserId = 21,
                     UserName = "bolsen",
                     Password = "Pass@word1",
-                    EmployeeId = 15
+                    EmployeeId = 25
                 }
                 
             };

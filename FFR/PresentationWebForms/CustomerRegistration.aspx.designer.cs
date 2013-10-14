@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApp {
+namespace PresentationWebForms {
     
     
     public partial class CustomerRegistration {
